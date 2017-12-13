@@ -7,10 +7,13 @@ for name in girls:
     hi(name)
     print('Next girl')
 
-if 2 > 5:
+if 2 > 5:#如果2>5
     print('2 > 5')
-elif 2 < 5:
+elif 2 < 5:#其他如果2<5
     print('2 < 5')
-else:
+else:#其他2==5
     print('2 == 5')
 
+marxes = ['groucho', 'chico', 'harpo']
+sorted_marxes = sorted(marxes)
+sorted_marxes

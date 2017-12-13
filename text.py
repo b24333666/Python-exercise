@@ -18,3 +18,5 @@ elif 2 < 5:
 else:
     print('2 == 5')
 
+A = input("請輸入你的出拳")
+B = 
