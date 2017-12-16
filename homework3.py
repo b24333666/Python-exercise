@@ -15,4 +15,4 @@ for i in range(height):
     print((' ' * (height - i)) + ('^' * stars))
     stars += 2
 for l in range(L):
-    print(' ' *  L  + ('^' * ( stars - (L * 2 ))))
+    print(' ' *  L  + ('^' * ( stars - L * 2 )))
