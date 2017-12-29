@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>01OperatorPrecedence.html</title>  
+</head>
+<body>
+
+    <script>
+        //++ 遞增 --遞減
+        b = 10
+        a = 1
+        c = b * a++
+        d = 2
+        document.write(c+"<br>");
+
+        b = 10
+        a = 1
+        c = a++ * b 
+        document.write(c+"<br>"); 
+        
+        b = 10
+        a = 1
+        d = 2
+        c = b * a++ / d;
+        
+        document.write(c+"<br>");
+
+
+        //三元運算子
+        var b = 3;
+        var y =10>b?b:0;
+        document.write(y+"<br>")
+
+
+
+    </script>
+</body>
+</html>

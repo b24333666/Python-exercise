@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>02DOM2.html</title>
+	</head>
+
+	<body>
+		<div id="iddiv">div</div>
+		<input type="button" id="idCreateEle" value="CreateElement">	
+
+        <script>
+            document.getElementById("idCreateEle").addEventListener("click", CreateElement);
+            function CreateElement() {
+                var theDIV = document.getElementById("iddiv");  //取得div物件
+
+                var eleP = document.createElement("p");
+                var txtP = document.createTextNode("Hello World");
+                eleP.appendChild(txtP);
+
+                theDIV.appendChild(eleP);
+
+                var eleImg = document.createElement("img");
+                eleImg.setAttribute("src", "DOM/DOMImage/rabbit-hat.gif");
+
+                theDIV.appendChild(eleImg);
+            }
+        </script>
+	</body>
+</html>

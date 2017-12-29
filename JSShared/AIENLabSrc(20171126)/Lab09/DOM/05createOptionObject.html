@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>05createOptionObject.html</title>
+    <script type="text/javascript">
+        window.onload=function(){
+            for (i = 1; i <= 12; i++) {   //新增月 
+                var opt = window.document.createElement("option");
+                opt.value = i;
+                opt.innerHTML = i;
+                document.getElementById('idSelectMonth').appendChild(opt);
+            }
+
+        };
+	</script>
+	</head>
+	<body>
+		<select id="idSelectMonth"></select>
+	</body>
+
+</html>

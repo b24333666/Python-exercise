@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>02if.html</title>
+</head>
+<body>
+
+    <script>
+        var a = 10, b = 20;
+
+        //使用window.prompt()方法，取得變數値
+
+        if (a > b)
+            document.write("a > b");
+        else
+            document.write("a < b");
+
+        var  a = parseInt(window.prompt("請輸入購票年齡: "));
+
+        if (0 < a && a < 6 || a > 65 )
+            document.write("免票");
+
+        else if (6 < a && a < 25) 
+            document.write("學生票");
+        else if (25 < a && a < 65) 
+            document.write("全票");
+
+    </script>
+</body>
+</html>

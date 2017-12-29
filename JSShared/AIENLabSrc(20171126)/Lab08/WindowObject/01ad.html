@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>01ad.html</title>
+</head>
+<body>
+    <input type="button" id="idbutself" value="關閉自己" />	
+	<input type="button" id="idbuthref" value="goto 01a.html" />
+	<input type="button" id="idbutstop" value="停止關閉" />
+
+    <script>
+        document.getElementById("idbutself").addEventListener("click",selff);  //事件繫結
+        document.getElementById("idbuthref").addEventListener("click",hreff);
+        document.getElementById("idbutstop").addEventListener("click",stopf);
+       
+        function selff() {
+            //關閉視窗
+        }
+        function hreff() {
+            //轉向連結到01a.html
+            //slide 72,
+            //location.href-轉向連結到其它網址
+
+        }
+        function stopf() {
+            //slide 71,
+            //window.clearInterval-停止計時器
+
+        }
+    </script>
+</body>
+</html>

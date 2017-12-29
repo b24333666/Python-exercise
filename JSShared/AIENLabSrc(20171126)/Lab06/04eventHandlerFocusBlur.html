@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>04eventHandlerFocusBlur.html</title>
+
+</head>
+<body>
+    <input type="text" id="idinput" value="click here change bgColor"/>
+	<h1>this is h1</h1>
+    <hr />
+    name:<input type="text" id="idName" />
+    <span id="idsp"></span>
+    <br />
+    password:<input type="password" id="idPwd" />
+
+    <script>
+        //************************************************
+        //slide 78
+        //文件外觀 : bgColor(background color)背景顏色 ,
+        //           fgColor(foreground color)前景顏色即文件上的文字顏色
+        //*************************************************
+        document.getElementById("idinput").addEventListener("change", change);  //事件繫結，焦點離開
+        document.getElementById("idinput").addEventListener("blur", blur);  //事件繫結，取得焦點   
+        document.getElementById("idinput").addEventListener("focus", focus);  //事件繫結，改變內容
+        document.getElementById("idName").addEventListener("blur", ckName);  //事件繫結，焦點離開      
+
+        function blur() {
+
+        }
+
+        function focus() {
+
+        }
+
+        function change() {
+
+        }
+
+        function ckName() {
+
+        }
+    </script>
+</body>
+</html>
