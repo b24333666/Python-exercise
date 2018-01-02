@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+
+  
+    請輸入名字:<input type="text" id="Name" value=""  >
+    請輸入密碼:<input type="password" id="pinpwd" value="" >
+    請輸入日期:<input type="date" id="date" value="" >
+    <input type="submit" value="送出" onclick="allch()"  item-height="5" item-width="5"></button>
+    <script>
+    function allch(){
+        Name = 
+        function Name() {
+        var theName = document.getElementById("Name").value;
+        var re=new RegExp("^\u4e00-\u9FFF$");
+        if (re.test(theName))
+            alert("successful");
+        else
+            alert("failure");
+        }
+        
+        function pinpwd() {
+            var thepwd = document.getElementById("pinpwd").value;
+            var re=new RegExp("\w.{6,10}$");
+            if (re.test(thepwd))
+                alert("successful");
+            else
+                alert("failure");
+        }
+
+        function chkEmail() {
+            var theEmail = document.getElementById("idEmail").value;
+            var re=new RegExp("^.+@.+\\..{2,3}$");
+            if (re.test(theEmail))
+                alert("successful");
+            else
+                alert("failure");
+        }
+    }
+        // if (Name && pinpwd && chkEmail )
+        //     flag1=true;
+        //     alert("歡迎進入!!");
+        // else
+        //     alert("請再重新輸入");
+    
+
+        // function Name() {
+        //     //取得元素值
+        //     var theName = document.getElementById("Name").value;
+        //     //建立RegExp物件語法 2
+        //     // var re = "\u4e00-\u9FFF";
+        //     //建立RegExp物件語法 1
+        //     var re=new RegExp("^\u4e00-\u9FFF$");
+        //     if (re.test(theName))
+        //         alert("successful");
+        //     else
+        //         alert("failure");
+        // }
+        
+        // function pinpwd() {
+        //     //取得元素值
+        //     var thepwd = document.getElementById("pinpwd").value;
+        //     //建立RegExp物件語法 2
+        //     // var re = /^.+@.+\..{2,3}$/;
+        //     //建立RegExp物件語法 1
+        //     var re=new RegExp("\w.{6,10}$");
+        //     if (re.test(thepwd))
+        //         alert("successful");
+        //     else
+        //         alert("failure");
+        // }
+
+        // function chkEmail() {
+        //     //取得元素值
+        //     var theEmail = document.getElementById("idEmail").value;
+        //     //建立RegExp物件語法 2
+        //     // var re = /^.+@.+\..{2,3}$/;
+        //     //建立RegExp物件語法 1
+        //     var re=new RegExp("^.+@.+\\..{2,3}$");
+        //     if (re.test(theEmail))
+        //         alert("successful");
+        //     else
+        //         alert("failure");
+        // }
+
+
+        
+            //判斷元素值是否為空白，密碼長度是否大於6
+        //     var thePwdLen=thePwd.length;
+        //     var flag1=false; 
+        //     var flag2=false;
+        //     if(thePwd=="")
+        //         alert("You must enter");
+        //      else if(thePwdLen>=6){
+        //         for(var i=0;i<thePwdLen;i++){
+        //             var PwdChr=thePwd.charAt(i).toUpperCase();
+        //             alert(PwdChr);
+                
+        //          //alert(">6"); 
+        //              if(PwdChr>="A" && PwdChr<="Z")
+        //              flag1=true;
+        //              else if(PwdChr>="0" && PwdChr<="9")
+        //              flag2=true;
+        //              if(flag1 && flag2) break;
+        //              }        
+        //         if(flag1 && flag2) alert("correct"); else alert("incorrect");
+        //      } else 
+        //          alert("The Password length greater than 6");
+        // }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
