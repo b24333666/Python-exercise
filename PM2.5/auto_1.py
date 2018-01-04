@@ -3,7 +3,7 @@ import requests
 import os
 
 md5 = hashlib.md5()
-url = 'http://www.taiwanrate.org/'
+url = 'https://quality.data.gov.tw/dq_download_csv.php?nid=34827&md5_url=1971e5ea258e4e5e2a2ad57e6330a603'
 md5.update(b'Test string!')
 print(md5.hexdigest())
 

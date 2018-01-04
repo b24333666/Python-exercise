@@ -1,0 +1,12 @@
+Age: <input type="text" id="idAge" size="3" maxlength="3">
+<input type="button" value="check" onClick="chk()">
+<script>
+function chk(){
+	var theAge=document.getElementById("idAge").value;
+	if (isNaN(theAge))
+		alert("請輸入數字0-9");
+	else		
+		alert("Age :"+theAge);
+		
+}
+</script>

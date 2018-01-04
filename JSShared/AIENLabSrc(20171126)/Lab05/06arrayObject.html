@@ -8,42 +8,59 @@
 
     <script>
         //建立陣列語法 1
-        var balls = new Array();
+        //var balls = new Array();
         //alert(balls.length);
-        balls[0] = "basketball";
-        balls[1] = "baseball";
-        balls[2] = "tennis";
-        balls[3] = "volleyball";
-        balls[4] = 123;
+        // balls[0] = "basketball";
+        // balls[1] = "baseball";
+        // balls[2] = "tennis";
+        // balls[3] = "volleyball";
+        // balls[4] = 123;
         //alert(balls.length);
         //列印陣列語法 1
-        document.write(balls);
+        // document.write(balls);
+        // console.log(balls);
 
 
         //建立陣列語法 2
-
+        // var balls2 = new Array("basketball","baseball",345);
+        // document.write(balls2);
 
 
         //建立陣列語法 3
-
-
+        // var balls3 = ["basketball","baseball","tennis",345];
+        // document.write(balls3);
 
         //列印陣列語法 2 -- 使用 for loop
+        // for(var i = 0;i<balls3.length;i++){
+        //     document.write("balls3["+i+"]="+balls3[i]+"<br>");
+        // }
 
-
-        //var strcookie = "name2=Mary;name=Jack";
+        document.writeln("<table>");
+        var strcookie = "name2=Mary;name=Jack";
+        cookieArray = strcookie.split(";");
+                for (var i = 0; i < cookieArray.length; i++) {
+                    thisCookie = cookieArray[i].split("=");
+                    alert(thisCookie[0]+thisCookie[1]);
+                    cookieName = decodeURI(thisCookie[0]);
+                    cookieValue = decodeURI(thisCookie[1]);
+                    document.writeln("<tr><td style='border:solid red 2px'>" + cookieName + "</td><td style='border:solid red 2px'>" + cookieValue + "</td></tr>");
+                }
+                document.writeln("</table>");
 
 
         //在陣列後面新增一個元素
+        var balls3 = ["basketball","baseball","tennis",345];
+        balls3.push("123")
+        document.write(balls3);
 
         //刪除陣列最後一個元素
 
-        /*
+       
             var balls=["basketball","baseball","tennis","volleyball",123];
             document.write("join('-')="+balls.join("-")+"<br>");
             document.write("reverse().join('=>')="+balls.reverse().join("=>")+"<br>");
             document.write("sort()="+balls.sort()+"<br>");
-       */
+       
     </script>
 </body>
 </html>

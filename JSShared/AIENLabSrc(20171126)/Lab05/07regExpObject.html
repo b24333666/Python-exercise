@@ -11,17 +11,18 @@
     <input type="button" value="checkEmail" onclick="chkEmail();" />
 
     <script>
-    /*
+    
         var str="Is this all there is?";
 		var re=new RegExp("is","gi");
 		document.write(str.match(re)+"<hr/>");
-    */
+    
         function chkEmail() {
             //取得元素值
             var theEmail = document.getElementById("idEmail").value;
             //建立RegExp物件語法 2
-            var re = /^.+@.+\..{2,3}$/;
+            // var re = /^.+@.+\..{2,3}$/;
             //建立RegExp物件語法 1
+            var re=new RegExp("^.+@.+\\..{2,3}$");
 
 
             if (re.test(theEmail))

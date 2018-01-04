@@ -6,25 +6,47 @@
 
 </head>
 <body>
-    Age:<input type="text" size="3" maxlength="3" /><!-- 瀏覽器執行到此標籤會建立一個物件-->
+    Age:<input type="text" id="idAge" value="123" name="textAge" size="3" maxlength="3" /><!-- 瀏覽器執行到此標籤會建立一個物件-->
     <br />
-    <input type="button" value="checkAge"  />
+    <input type="button" value="checkAge" onClick="chk()">
 
 
     <script>
         //[object class] 一個物件的類別(class)屬性是個字串，提供關於該物件的種類的資訊
         //http://www.w3schools.com/jsref/dom_obj_text.asp (文字元素的value屬性)
-
-
+        var theAgeObj = document.getElementById("idAge");
+        alert(theAgeObj); //[Object HTML inputElement]
+        alert(typeof theAgeObj);//Object
+        //console.log(theAgeObj)
 
         //取得元素
+        var theAgeObjVal=theAgeObj.value;
+        alert(typeof theAgeObjVal);//string
+        alert(theAgeObjVal);//[object HTML inputElement]
 
         //取得元素值
-
+        function chk(){
+        var theAge=document.getElementById("idAge").value;
+        alert(theAge);
+        
 
 
         //判斷元素值是否為數字
+        if(isNaN(theAge))
+            alert("please input number 0~9!!");
+        else
+            alert("Age :"+theAge);
+        }
 
+
+
+        //         function chk(){
+        // var theAge=document.getElementById("idAge").value;
+        // if (isNaN(theAge))
+        //     alert("請輸入數字0-9");
+        // else		
+        //     alert("Age :"+theAge);
+        //         }
 
     </script>
 </body>

@@ -9,25 +9,9 @@
     <script>
         //==========定義函數==================
         //方法一宣告式函數，定義帶參數的函數
-        // a = parseInt(window.prompt("請輸入數字a:"));
-        // b = parseInt(window.prompt("請輸入數字b:"));
-        // x = function fun(a,b){
-        //     return ( a * b )
-        // };
-        // document.write( a * b );
 
-        var cars = {brand:audi,color:bule}
 
-        cars.full1 = function(){
-            return this.brand+","+this.color
-        }
-        document.write(cars.full1()+"<br>");
-// ==========================================================================
-        function print(){
-            return this.brand+","+this.color
-        }
-        cars.full2 = print;
-        document.write(cars.full2+"<br>");
+
 
         //==========函式呼叫==================
         //呼叫帶參數的函數
@@ -36,6 +20,7 @@
 
         //JavaScript沒有規定function的參數及呼叫function時給予的參數數量必須要一致
         //少掉的參數為undefined，而多的參數會被忽略
+
 
 
         //==========定義函數==================

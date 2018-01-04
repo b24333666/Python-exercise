@@ -10,10 +10,19 @@
     <script>
         //建立日期物件語法 1
         var d = new Date();
+        alert(d);
 
         //建立日期物件語法 3
+        var d = new Date("2018/2/29");
+        alert(d);
+        var d = new Date("2018/1/32");
+        alert(d);
 
         //建立日期物件語法 4
+        var d = new Date(2018,1,29);
+        alert(d);
+        var d = new Date(2018,0,32);
+        alert(d);
 
         var theYear = d.getFullYear() - 1911;
         var theMonth = d.getMonth() + 1;
@@ -26,8 +35,15 @@
         //昨天毫秒數=今天毫秒數 - 1天毫秒數
         //昨天毫秒數=new Date().getTime() - 24 * 60 * 60 * 1000
         //昨天=new Date(昨天毫秒數)
+        var y = new Date(new Date().getTime() - 24 * 60 * 60 * 1000);
+        alert(y);
         //================
         //建立日期物件語法 2
+        // function delCookie(key) {
+        //     var exp = new Date();
+            //alert(exp);
+           
+
 
 
     </script>
