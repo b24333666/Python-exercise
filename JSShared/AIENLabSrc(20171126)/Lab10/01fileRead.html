@@ -13,15 +13,27 @@
         document.getElementById("file1").addEventListener("change", fileViewer);
         function fileViewer(){
             //取得使用者在檔案選擇標籤中選取檔案
-
+            var files = document.getElementById("file1").files;
+            for (var i=0;i < files.length;i++ ){
+                var (file.name+";"+file.type+"("+file.size+")");
+            }
 
             //1. 建立FileReader物件
-
-
+            function fileviewer(){
+                var reader = new FileReader();
+                reader.onload = function(e){
+                    var fileContent = e.target.result;
+                    var show = document.getElementById("img1");
+                    show.setAttribute("src",fileContent);
+                }
+                var file =document.getElementById("file1").file[0];
+                reader.readAsDataURL(file);
+            }
+            
             //3.onload資料讀取成功完成時觸發
             reader.addEventListener("load", function (e) {
                 //4. 將檔案內容暫存
-
+            
                 //5. 將檔案內容放textarea標籤內
 
             });

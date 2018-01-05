@@ -26,23 +26,29 @@
     <div id="dropZone1"></div>
 
     <script>
-        document.getElementById("dragItem").addEventListener("dragstart", dragStartHandler);
-        document.getElementById("dropZone").addEventListener("dragover", dragoverHandler);
+        document.getElementById("dropItem").addEventListener("dragstart", dragoverHandler);
+        document.getElementById("dropZone").addEventListener("dragover", dropHandler);
         document.getElementById("dropZone").addEventListener("drop", dropHandler);
-        document.getElementById("dropZone1").addEventListener("dragover", dragoverHandler);
+        document.getElementById("dropZone1").addEventListener("dragover", dropHandler);
         document.getElementById("dropZone1").addEventListener("drop", dropHandler);
-
-        function dragStartHandler(e) {
-            //儲存要拖放的資料
-
-        }
-
-
         function dragoverHandler(e) {
-            //取消預設動作
+            e.dataTransfer.setData("text/plain",e.target.id);
+
         }
+        function dragoverHandler(e){
+            e.preventDefault();
+        }
+
 
         function dropHandler(e) {
+            e.preventDefault();
+            var eleID=e.dataTransfer.getData("text/plain");
+            var eleObj=document.getElementById(eleID);
+            vareleDiv=document.createElement("div");
+            eleDiv.innerHTML=eleObj.innerHTML;
+            eleDiv.setaAttribute("class","dragItemstyle");
+            e.currentTarget.appendchild(eleDiv);
+        }
             //取消預設動作
 
             //取出拖放資料
