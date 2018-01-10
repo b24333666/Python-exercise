@@ -1,22 +1,26 @@
 import hashlib
 import requests
 import os
-import sqlite3
+# import sqlite3 轉MySQL
 import time
+import MySQLdb
 
 
 
 # if not os.path.isdir('PM25'):
 #     os.mkdir('PM25')
 # ===========================PM_2.5================================
-html = requests.get("http://opendata.epa.gov.tw/ws/Data/ATM00625/?$format=csv")
+url = "http://opendata.epa.gov.tw/ws/Data/ATM00625/?$format=csv"
+html = requests.get(url)
 html.encoding = "UTF-8"
 dateName = time.strftime("%y%m%d")
-conn = sqlite3.connect("PM25"+dateName+".db")
+# conn = sqlite3.connect("PM25"+dateName+".db")
+conn = MySQLdb.connect("localhost","root","root","PM25",use_unicode=True, charset="utf8mb4")
+#                       ("SQL位置","SQL帳號","SQL密碼","Table Name",開啟萬國碼, 設定編碼為utf8) 後面兩項沒開會跳出
+#                       UnicodeEncodeError: ‘latin-1’ codec can’t encode characters in position 44-46: ordinal not in range(256)
 cursor = conn.cursor()
 # ===========================MD5檢驗=================================
 md5 = hashlib.md5()
-url = "http://opendata.epa.gov.tw/ws/Data/ATM00625/?$format=csv"
 # md5.update(b'Test string!') Test MD5功能用
 # print("目前MD5為:"+ md5)
 # ===================================================================
@@ -48,9 +52,16 @@ else:
         # if not os.path.isdir(os.path.join('PM25',article.text)):
         #     os.mkdir(os.path.join('PM25',article.text))
         print("資料未更新，正在從網路更新ing")
-        sqlstr = "create table if not exists PM25"+str(dateName)+" (num integer primary key autoincrement not null,\
-        'Site' text , 'county' text , 'PM_25' text, 'DataCreationDate' text )"
-        sqlstr_1 = "create unique index PM251 on PM25"+str(dateName)+" ('Site', 'DataCreationDate')"# 創造unique 名稱PM251(任意名)on檔名"(Site,DataCreationDate)""
+        sqlstr = "CREATE IF NOT EXISTS TABLE `pm25`.`pm25"+str(dateName)+"` (\
+                `num` INT NOT NULL AUTO_INCREMENT,\
+                `Site` VARCHAR(10) NOT NULL,\
+                `county` VARCHAR(45) NOT NULL,\
+                `PM_25` VARCHAR(45) NULL,\
+                `DataCreationDate` VARCHAR(45) NULL,\
+                 PRIMARY KEY (`num`),\
+                UNIQUE INDEX `Site_UNIQUE` (`Site` ASC),\
+                UNIQUE INDEX `DataCreationDate_UNIQUE` (`DataCreationDate` ASC));"
+        # 上面是MySQL語法
         cursor.execute (sqlstr)
         cursor.execute (sqlstr_1)
     except Exception as e:
@@ -59,11 +70,11 @@ else:
     list1 = html.text.split("\r\n")
     print("測站名稱\t縣市名稱\t細懸浮微粒濃度(PM2.5)\t資料建置日期")
     count=0
-    for i in range(1,len(list1)-1):#一定要range(start,end-1)否則會出現讀取資料超出範圍一格
+    for i in range(1,len(list1)-1):#一定要Len(list)-1否則會出現讀取資料超出範圍一格
         list2 = list1[i].split(",")
         print(list2[0]+"\t"+list2[1]+"\t"+list2[2]+"\t"+list2[3])
-        sqlstr_2 = "replace into PM25"+str(dateName)+"(Site,county,PM_25,DataCreationDate) values\
-        ('"+str(list2[0])+"','"+str(list2[1])+"','"+str(list2[2])+"','"+str(list2[3])+"')"
+        sqlstr_2 = "replace into PM25(Site,county,PM_25,DataCreationDate) values\
+        ('"+str(list2[0])+"','"+str(list2[1])+"','"+str(list2[2])+"','"+str(list2[3])+"');"
         count += 1
         cursor.execute(sqlstr_2)
         conn.commit()

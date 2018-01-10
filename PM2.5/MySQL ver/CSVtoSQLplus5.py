@@ -15,7 +15,7 @@ html = requests.get(url)
 html.encoding = "UTF-8"
 # dateName = time.strftime("%y%m%d")
 # conn = sqlite3.connect("PM25"+dateName+".db")
-conn = MySQLdb.connect("localhost","root","root","PM25",use_unicode=True, charset="utf8")
+conn = MySQLdb.connect("localhost","root","root","PM25",use_unicode=True, charset="utf8mb4")
 #                       ("SQL位置","SQL帳號","SQL密碼","Table Name",開啟萬國碼, 設定編碼為utf8) 後面兩項沒開會跳出
 #                       UnicodeEncodeError: ‘latin-1’ codec can’t encode characters in position 44-46: ordinal not in range(256)
 cursor = conn.cursor()
@@ -45,16 +45,16 @@ else:
         f.write(md5)
 # ===========================比對MD5新舊================================
 # 新MD5與舊MD5一樣時為不更新狀態
-if md5 != old_md5: 
+if md5 == old_md5: 
     print("尚未有新資料加入，請等候...")
 else:
     try:
         # if not os.path.isdir(os.path.join('PM25',article.text)):
         #     os.mkdir(os.path.join('PM25',article.text))
         print("資料未更新，正在從網路更新ing")
-        sqlstr = "create table if not exists PM25 (num integer primary key autoincrement not null,\
-        'Site' text , 'county' text , 'PM_25' int, 'DataCreationDate' text );"
-        sqlstr_1 = "create unique index PM251 on PM25 ('Site', 'DataCreationDate');"
+        sqlstr = "create table PM25 (num integer primary key autoincrement not null,\
+        'Site' VARCHAR , 'county' VARCHAR , 'PM_25' integer, 'DataCreationDate'VARCHAR );"
+        # sqlstr_1 = "create unique index PM251 on PM25 ('Site', 'DataCreationDate');"
         cursor.execute (sqlstr)
         cursor.execute (sqlstr_1)
     except Exception as e:
