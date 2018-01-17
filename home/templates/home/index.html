@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>現在時間：{{ now | date:'Y/m/d' }}</h2>
+<table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Email</th>
+            </tr>
+        </thead>               
+        <tbody>
+            {% for user in users|dictsort:'age' %}
+              <tr>
+                  <td>{{user.name}}</td>
+                  <td>{{user.age}}</td>
+                  <td>{{user.email}}</td>
+              </tr>
+             {% endfor %}   
+        </tbody>    
+        </table>
+{% endblock %}
+
+
+                                   
+              
+
