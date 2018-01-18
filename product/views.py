@@ -3,9 +3,9 @@ from .modelscategory import Category
 from .modelsproduct import Product
 from django.core.files.storage import FileSystemStorage
 
-# Create your views here.
+# Create your views here..
 def index(request):    
-    title = "商品管理"
+    title = "資料管理"
     product = Product()
     products = product.all()
     return render(request,'product/index.html',locals())
@@ -34,7 +34,7 @@ def create(request):
     category = Category()
     datas = category.all()
 
-    title = "商品新增"
+    title = "新增資料"
     return render(request,'product/create.html',locals())
 
 def update(request, id):
@@ -60,7 +60,7 @@ def update(request, id):
 
 
 
-    title = "商品修改"
+    title = "資料修改"
     category = Category()
     categories = category.all()
 

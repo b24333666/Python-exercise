@@ -3,32 +3,37 @@
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="form-group row">
-      <label for="categoryid" class="col-sm-2 col-form-label">CategoryID</label>
+      <label for="modelnumber" class="col-sm-2 col-form-label">County</label>
       <div class="col-sm-10">
-          <select id="categoryid" name="categoryid" class="form-control" >
-             <option value="0">請選擇</option>            
+          <select id="modelnumber" name="modelnumber" class="form-control" >
+             <option value="0">selectros</option>            
               {% for category in datas %}
-                <option value="{{category.0}}">{{category.1}}</option>
+                <option value="{{category.0}}">{{category.2}}</option>
               {% endfor %}
           </select>       
       </div>
     </div>
     <div class="form-group row">
-      <label for="modelnumber" class="col-sm-2 col-form-label">ModelNumber</label>
+      <label for="modelname" class="col-sm-2 col-form-label">Site</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="modelnumber" name="modelnumber" placeholder="ModelNumber">
+          <select id="modelname" name="modelname" class="form-control" >
+              <option value="0">selectros</option>            
+               {% for category in datas %}
+                 <option value="{{category.0}}">{{category.1}}</option>
+               {% endfor %}
+           </select> 
       </div>
     </div>
     <div class="form-group row">
-      <label for="modelname" class="col-sm-2 col-form-label">ModelName</label>
+      <label for="categoryid" class="col-sm-2 col-form-label">NumberID</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="modelname" name="modelname" placeholder="ModelName">
+        <input type="text" class="form-control" id="categoryid" name="categoryid" placeholder="NumberID">
       </div>
     </div>
     <div class="form-group row">
-      <label for="unitcost" class="col-sm-2 col-form-label">UnitCost</label>
+      <label for="unitcost" class="col-sm-2 col-form-label">PM2.5</label>
       <div class="col-sm-10">
-        <input type="number" class="form-control" id="unitcost" name="unitcost" placeholder="UnitCost">
+        <input type="number" class="form-control" id="unitcost" name="unitcost" placeholder="Values">
       </div>
     </div>
     <div class="form-group row">
@@ -41,7 +46,7 @@
     <div class="form-group row">
       <label for="description" class="col-sm-2 col-form-label">Description</label>
       <div class="col-sm-10">
-          <textarea id="description" name="description" class="form-control" placeholder="Description"></textarea>
+          <input type="date" id="description" name="description" class="form-control"></textarea>
       
       </div>
     </div>
