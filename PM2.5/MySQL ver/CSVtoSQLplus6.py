@@ -13,8 +13,9 @@ url = "http://opendata.epa.gov.tw/ws/Data/ATM00625/?$format=csv"
 html = requests.get(url)
 html.encoding = "UTF-8"
 dateName = time.strftime("%y%m%d")
-# conn = sqlite3.connect("PM25"+dateName+".db")
-conn = MySQLdb.connect("localhost","root","root","PM25",use_unicode=True, charset="utf8mb4")
+
+conn = MySQLdb.connect("127.0.0.1","root","root","PM25",use_unicode=True, charset="utf8mb4")
+# conn = MySQLdb.connect("PM25" + dateName + ".mwb")
 #                       ("SQL位置","SQL帳號","SQL密碼","Table Name",開啟萬國碼, 設定編碼為utf8) 後面兩項沒開會跳出
 #                       UnicodeEncodeError: ‘latin-1’ codec can’t encode characters in position 44-46: ordinal not in range(256)
 cursor = conn.cursor()
@@ -28,6 +29,8 @@ html_1 = requests.get(url).text.encode('UTF-8-sig')
 # 判斷網頁是否更新
 md5 = hashlib.md5(html_1).hexdigest()
 print("目前MD5為:"+ md5)
+
+
 #透過OS的PATH變數新增old_md5.txt文字檔
 if os.path.exists('old_md5.txt'): 
     # 開啟old_md5.txt 並為r 讀取狀態
@@ -44,15 +47,15 @@ else:
         f.write(md5)
 # ===========================比對MD5新舊================================
 # 新MD5與舊MD5一樣時為不更新狀態
-if md5 != old_md5: 
+if md5 == old_md5: 
     print("尚未有新資料加入，請等候...")
 else:
     try:
         # if not os.path.isdir(os.path.join('PM25',article.text)):
         #     os.mkdir(os.path.join('PM25',article.text))
         print("資料未更新，正在從網路更新ing")
-        sqlstr = "CREATE IF NOT EXISTS TABLE `pm25`.`pm25"+str(dateName)+"` (\
-                `num` INT NOT NULL AUTO_INCREMENT,\
+        sqlstr = "CREATE IF NOT EXISTS TABLE pm25\
+                `(num` INT NOT NULL AUTO_INCREMENT,\
                 `Site` VARCHAR(10) NOT NULL,\
                 `county` VARCHAR(45) NOT NULL,\
                 `PM_25` VARCHAR(45) NULL,\
