@@ -3,7 +3,7 @@ from .modelscategory import Category
 from .modelsproduct import Product
 from django.core.files.storage import FileSystemStorage
 
-# Create your views here..
+# Create your views here.
 def index(request):    
     title = "資料管理"
     product = Product()
