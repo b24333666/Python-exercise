@@ -6,7 +6,6 @@ import time
 import MySQLdb
 
 
-
 # if not os.path.isdir('PM25'):
 #     os.mkdir('PM25')
 # ===========================PM_2.5================================
