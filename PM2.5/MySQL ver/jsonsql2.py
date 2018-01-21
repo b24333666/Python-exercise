@@ -20,10 +20,11 @@ url = "http://opendata.epa.gov.tw/ws/Data/ATM00625/?$format=json"
 # print("目前MD5為:"+ md5)
 # ===================================================================
 
-html = requests.get(url).text.encode('UTF-8-sig')
-html_1 = json.loads(html)
+html = requests.get(url)
+urls = html.text.encode('UTF-8-sig')
+html_1 = json.loads(urls)
 # 判斷網頁是否更新
-md5 = hashlib.md5(html).hexdigest()
+md5 = hashlib.md5(urls).hexdigest()
 print("目前MD5為:"+ md5)
 #透過OS的PATH變數新增old_md5.txt文字檔
 if os.path.exists('old_md5.txt'): 
@@ -56,14 +57,17 @@ else:
     except Exception as e:
         print(e)
 
-    list1 = url.split("\r\n")
-    print("測站名稱\t縣市名稱\t細懸浮微粒濃度(PM2.5)\t資料建置日期")
+    # list1 = urls.split("\r\n")
+    print("縣市名稱\t測站名稱\t細懸浮微粒濃度(PM2.5)\t資料建置日期")
     count=0
-    for i in range(1,len(list1)-1):#一定要range(start,end-1)否則會出現讀取資料超出範圍一格
-        list2 = list1[i].split(",")
-        print(list2[0]+"\t"+list2[1]+"\t"+list2[2]+"\t"+list2[3])
+    for i in html_1:
+        county = i["county"]
+        Sitename = i["Site"]
+        PM25 = i["PM25"]
+        DataCreationDate = i["DataCreationDate"]
+        print("{0}\t\t{1}\t\tPM2.5:\t{2}\t\t建置日期:{3}".format(county,Sitename,PM25,DataCreationDate))
         sqlstr_2 = "replace into PM25"+str(dateName)+"(Site,county,PM_25,DataCreationDate) values\
-        ('"+str(list2[0])+"','"+str(list2[1])+"','"+str(list2[2])+"','"+str(list2[3])+"')"
+        ('"+str(county)+"','"+str(Sitename)+"','"+str(PM25)+"','"+str(DataCreationDate)+"')"
         count += 1
         cursor.execute(sqlstr_2)
         conn.commit()
