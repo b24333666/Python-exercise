@@ -73,7 +73,9 @@ else:
         print("已輸入第"+str(count)+"筆資料!!")
     conn.close()
 
-    """NSERT INTO pm25 (欄位01,欄位02) SELECT 填入值01,填入值02 FROM 虛擬表名稱 WHERE NOT EXISTS
-    (SELECT 欄位01 FROM 表01 WHERE 欄位01 = 填入值01 AND 欄位02 = 填入值02 )"""
+    # """NSERT INTO table (欄位01,欄位02) SELECT 填入值01,填入值02 FROM 虛擬表名稱 WHERE NOT EXISTS
+    # (SELECT 欄位01 FROM 表01 WHERE 欄位01 = 填入值01 AND 欄位02 = 填入值02 )"""
 
-    """SELECT * FROM pm25 GROUP BY DataCreationDate count(*)>1"""
+    #     """NSERT INTO pm25 (欄位01,欄位02) SELECT 填入值01,填入值02 FROM 虛擬表名稱 WHERE NOT EXISTS
+    # (SELECT 欄位01 FROM 表01 WHERE 欄位01 = 填入值01 AND 欄位02 = 填入值02 )"""
+
