@@ -36,18 +36,17 @@ var svg = d3.select("body")
             .attr("width",w)
             .attr("height",h);
 
-
-    // svg.select("rect")
-    //     .transition()
-    //     .duration(1000)
-    //     .attr("fill","black")
-    //     .attr("y",10);
-
-
     svg.selectAll("rect")
        .data(dataset)
        .enter()
        .append("rect")
+//       .attr("x",0)
+//       .attr("y",0)
+//       .attr("width",20)
+//       .attr("height",100)
+//       .attr("x",function(d,i){
+//        return i * (w/ dataset.length - barpadding);
+//       })
        .attr("x",function(d,i){
         return i * (w/ dataset.length);
        })
@@ -59,8 +58,46 @@ var svg = d3.select("body")
        })
        .attr("width", w / dataset.length - barpadding)
        .attr("fill",function(d){
-           return "RGB(0,0,"+ d*10 +")"
-       });
+           if(0<=d & d<=11)
+           return "#BBFF66"
+
+           else if(d<=12 & d<=23)
+           return "#77FF00" 
+           
+           else if(d<=24 & d<=35)
+           return "#00DD00" 
+                      
+           else if(d<=36 & d<=41)
+           return "#FFFF00" 
+                      
+           else if(d<=42 & d<=47)
+           return "#FFD700" 
+                      
+           else if(d<=48 & d<=53)
+           return "#FF8C00" 
+                      
+           else if(d<=54 & d<=58)
+           return "#FF6347" 
+                                 
+           else if(d<=59 & d<=64)
+           return "#FF0000" 
+                                 
+           else if(d<=65 & d<=70)
+           return "#800000" 
+                                 
+           else (71<=d)
+           return "#BA55D3" 
+           
+       })
+//       .transtion()
+//       .duration(2000)
+//       .attrTween('y',function(d,i,a){
+//           return function(t){
+//            console.log(t);
+//            return Number(a) + t
+//           }
+//       })
+       ;
 
     svg.selectAll("text")
        .data(dataset)
@@ -73,15 +110,11 @@ var svg = d3.select("body")
         return i * (w/ dataset.length) + (w / dataset.length - barpadding) / 2;
        })
        .attr("y",function(d){
-        return h - (d*4)+14;
+        return h - (d*4)-3;
        })
        .attr("font-family","sans-serif")
        .attr("font-size","14px")
-       .attr("fill","white")
-       .attr("text-anchor","middle");
-
-    // svg.select("rect")
-    //    .transition()
+       .attr("text-anchor","middle")
 
 
 
